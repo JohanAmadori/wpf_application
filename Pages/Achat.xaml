@@ -1,0 +1,144 @@
+﻿<Page x:Class="wpf_application.Pages.Achat"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:wpf_application.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Achat">
+
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="#333"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#DDD"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Background" Value="#007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#005C99"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="RowBackground" Value="#FAFAFA"/>
+            <Setter Property="AlternatingRowBackground" Value="#EFEFEF"/>
+            <Setter Property="GridLinesVisibility" Value="None"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#E0E0E0"/>
+            <Setter Property="VerticalGridLinesBrush" Value="#E0E0E0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="RowHeight" Value="32"/>
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="DataGridCell">
+            <Setter Property="Padding" Value="10"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#BDD7F8"/>
+                    <Setter Property="BorderBrush" Value="#D2E3F1"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="247*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="544*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.ColumnSpan="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Name="lblAchat" Content="Achat (0)" FontSize="24" />
+
+            <Grid Grid.Row="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <!--Detail-->
+                <Grid Grid.Column="0" Margin="5 0 15 0">
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="50"/>
+
+
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Name="LIB_ID" Content="ID :" Width="150" HorizontalAlignment="Left"/>
+                    <Label Grid.Row="0" Name="txtId" Margin="120 2 2 0" VerticalContentAlignment="Center" />
+
+                    <Label Grid.Row="1" Name="LIB_user_id" Content="user_id :" Width="150" HorizontalAlignment="Left"/>
+                    <TextBox Name="SAI_user_id"  Grid.Row="1" Margin="120 2 2 0" VerticalContentAlignment="Center"/>
+
+                    <Label Grid.Row="2" Name="LIB_articles_id" Width="150" HorizontalAlignment="Left">
+                    </Label>
+                    <TextBox Name="SAI_articles_id"  Grid.Row="2" Margin="120 2 2 0" VerticalContentAlignment="Center"/>
+
+                    <Label Grid.Row="3" Name="LIB_quantité" Content="quantité :" Width="150" HorizontalAlignment="Left"/>
+                    <TextBox Name="SAI_quantité"  Grid.Row="3" Margin="120 2 2 0" VerticalContentAlignment="Center"/>
+
+
+                    <StackPanel Grid.Row="9" Margin="0 10 0 0" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="btnAjouter" Content="Ajouter" Click="btnAjouter_Click" Width="80" Height="40" VerticalAlignment="center" ></Button>
+                        <Button x:Name="btnModifier" Content="Modifier" Click="btnModifier_Click" Width="80" Height="40" VerticalAlignment="center" Margin="5 0"/>
+                        <Button x:Name="btnSupprimer" Content="Supprimer" Click="btnSupprimer_Click" Width="93" Height="40" VerticalAlignment="center"></Button>
+
+                    </StackPanel>
+
+
+                </Grid>
+
+
+
+                <DataGrid SelectionMode="Single" AutoGenerateColumns="False" Name="dgAchat" IsReadOnly="True" SelectionChanged="dgAchat_SelectionChanged" Grid.Column="1" Margin="0,-6,0,6">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding user_id}" Header="user_id" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding articles_id}" Header="articles_id" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding quantité}" Header="quantité" Width="100" />
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
