@@ -114,6 +114,11 @@
                     </Label>
                     <TextBox Name="SAI_articles_id"  Grid.Row="2" Margin="120 2 2 0" VerticalContentAlignment="Center"/>
 
+                    <Label Grid.Row="2" Name="LIB_valeur" Content="valeur" Width="150" HorizontalAlignment="Left">
+                    </Label>
+                    <TextBox Name="SAI_valeur"  Grid.Row="2" Margin="120 2 2 0" VerticalContentAlignment="Center"/>
+
+
                     <Label Grid.Row="3" Name="LIB_quantité" Content="quantité :" Width="150" HorizontalAlignment="Left"/>
                     <TextBox Name="SAI_quantité"  Grid.Row="3" Margin="120 2 2 0" VerticalContentAlignment="Center"/>
 
@@ -134,6 +139,7 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding user_id}" Header="user_id" Width="100"/>
                         <DataGridTextColumn Binding="{Binding articles_id}" Header="articles_id" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding valeur}" Header="valeur" Width="100" />
                         <DataGridTextColumn Binding="{Binding quantité}" Header="quantité" Width="100" />
                     </DataGrid.Columns>
                 </DataGrid>

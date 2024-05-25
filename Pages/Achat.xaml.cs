@@ -9,7 +9,7 @@ namespace wpf_application.Pages
     public partial class Achat : Page
     {
         // Objets nécessaires pour SQL
-        const string _dsn = "server=localhost;port=3306;database=raptest;username=root;password=;";
+        const string _dsn = "server=localhost;port=3306;database=kuph3194_rap;username=kuph3194_johan;password=fah9NadTO$Qx;";
         private MySqlConnection _connexion = new MySqlConnection(_dsn);
         private MySqlCommand _command;
         private MySqlDataAdapter _adapter;
@@ -40,19 +40,21 @@ namespace wpf_application.Pages
             txtId.Content = "";
             SAI_user_id.Text = "";
             SAI_articles_id.Text = "";
+            SAI_valeur.Text = "";
             SAI_quantité.Text = "";
 
         }
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
-            string _sql = "INSERT INTO paniers(user_id, articles_id, quantité) VALUES(@user_id, @articles_id, @quantité)";
+            string _sql = "INSERT INTO paniers(user_id, articles_id,valeur, quantité) VALUES(@user_id, @articles_id, @valeur, @quantité)";
 
             try
             {
                 _command = new MySqlCommand(_sql, _connexion);
                 _command.Parameters.AddWithValue("@user_id", SAI_user_id.Text);
                 _command.Parameters.AddWithValue("@articles_id", SAI_articles_id.Text);
+                _command.Parameters.AddWithValue("@valeur", SAI_valeur.Text);
                 _command.Parameters.AddWithValue("@quantité", SAI_quantité.Text);
 
                 _connexion.Open();
@@ -78,13 +80,14 @@ namespace wpf_application.Pages
 
         private void btnModifier_Click(object sender, RoutedEventArgs e)
         {
-            string _sql = "UPDATE paniers SET user_id = @user_id,articles_id = @articles_id, quantité = @quantité WHERE id = @Id";
+            string _sql = "UPDATE paniers SET user_id = @user_id,articles_id = @articles_id,valeur = @valeur, quantité = @quantité WHERE id = @Id";
             try
             {
                 _command = new MySqlCommand(_sql, _connexion);
                 _command.Parameters.AddWithValue("@Id", txtId.Content);
                 _command.Parameters.AddWithValue("@user_id", SAI_user_id.Text);
                 _command.Parameters.AddWithValue("@articles_id", SAI_articles_id.Text);
+                _command.Parameters.AddWithValue("@valeur", SAI_valeur.Text);
                 _command.Parameters.AddWithValue("@quantité", SAI_quantité.Text);
 
                 _connexion.Open();
@@ -140,6 +143,7 @@ namespace wpf_application.Pages
                 txtId.Content = _drv.Row["id"].ToString();
                 SAI_user_id.Text = _drv.Row["user_id"].ToString();
                 SAI_articles_id.Text = _drv.Row["achats_id"].ToString();
+                SAI_quantité.Text = _drv.Row["valeur"].ToString();
                 SAI_quantité.Text = _drv.Row["quantité"].ToString();
             }
         }

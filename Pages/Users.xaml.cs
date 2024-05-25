@@ -9,7 +9,7 @@ namespace wpf_application.Pages
     public partial class Users : Page
     {
         // Objets nécessaires pour SQL
-        const string _dsn = "server=localhost;port=3306;database=raptest;username=root;password=;";
+        const string _dsn = "server=localhost;port=3306;database=kuph3194_rap;username=kuph3194_johan;password=fah9NadTO$Qx;";
         private MySqlConnection _connexion = new MySqlConnection(_dsn);
         private MySqlCommand _command;
         private MySqlDataAdapter _adapter;
